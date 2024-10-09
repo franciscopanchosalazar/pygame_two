@@ -34,8 +34,8 @@ while True:
             print("Game Successfully closed")
             exit()
 
-    ch_one = characters_insert(game_screen,"graphics/snail/snail1.png",
-                                   120, 120, 110, 300)
+    ch_one = characters_insert(game_screen, "graphics/Snail/snail1.png",
+                               120, 120, 110, 300)
 
 
     pygame.display.update()

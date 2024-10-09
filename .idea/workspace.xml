@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de7af40c-1ddb-4b2e-8ced-5af9f8e7d1f2" name="Changes" comment="Working in tutorial and experiment file" />
+    <list default="true" id="de7af40c-1ddb-4b2e-8ced-5af9f8e7d1f2" name="Changes" comment="Working in tutorial and experiment file">
+      <change afterPath="$PROJECT_DIR$/font/Atop.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/Sky.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/sky.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/snail/moth1.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/moth1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/snail/snail1.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/snail1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/snail/snail2.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/snail2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainTutorial.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainTutorial.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,16 +44,20 @@
     &quot;Python.gameFunctions.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.mainTutorial.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pansh/PycharmProjects/Learning intermediate&quot;
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pansh/PycharmProjects/pygame_two/font&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\font" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\font" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two\graphics" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two\graphics\snail" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two" />
