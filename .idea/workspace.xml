@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de7af40c-1ddb-4b2e-8ced-5af9f8e7d1f2" name="Changes" comment="Working in tutorial and experiment file">
-      <change afterPath="$PROJECT_DIR$/font/Atop.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/Snail/moth2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/raid.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/gameFunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/Sky.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/sky.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/snail/moth1.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/moth1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/snail/snail1.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/snail1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/snail/snail2.png" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/Snail/snail2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainTutorial.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainTutorial.py" afterDir="false" />
     </list>
@@ -57,11 +53,11 @@
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\font" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two\graphics" />
+      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\graphics\Snail" />
+      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\font" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two\graphics\snail" />
       <recent name="C:\Users\pansh\PycharmProjects\pygame_two" />
-      <recent name="C:\Users\pansh\PycharmProjects\pygame_two\gameImages" />
     </key>
   </component>
   <component name="SharedIndexes">

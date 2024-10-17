@@ -1,8 +1,38 @@
-from random import randrange
-from turtle import TurtleScreen
-
+from random import randrange, randint
 import pygame
 from sys import exit
+
+# Functions
+
+# this function allows me to show multiple enemies
+
+# enemies_rect_list = enemies_movement(enemies_rect_list, va=enemy_condition)
+def lives_img_movement(lives_image):
+    game_screen.blit(lives_img, lives_image)
+
+def enemies_movement(enemies_list, mov_speed=6, game_lives=5):
+    if enemies_list:
+        for enemies_rect in enemies_list:
+            enemies_rect.x -= mov_speed
+
+            # Check for collision between enemies and main character
+            if main_ch_rec.colliderect(enemies_rect):
+                game_lives -= 1
+                enemies_rect.left = randrange(800, 1000)
+
+            if 40 < enemies_rect.y < 150:
+                game_screen.blit(moth_one_scl, enemies_rect)
+            elif 150 < enemies_rect.y < 300:
+                game_screen.blit(moth_two_scl, enemies_rect)
+            else:
+                pass
+
+        enemies_list = [enemy for enemy in enemies_list if enemies_rect.x > -100]
+
+        return enemies_list, game_lives
+
+    else:
+        return [], game_lives
 
 pygame.init()   # always required tu run pygame
 
@@ -29,10 +59,12 @@ game_clock = pygame.time.Clock()
 back_img_pos = [0, -200]
 back_img_2_pos  = [1000, -200]
 
+
 # Load background images to use, we use convert_alpha to standardize the images and make life easier for pygame
 back_img = pygame.image.load("graphics/cordillera.jpg").convert_alpha()
 back_img_2 = pygame.image.load("graphics/cordillera2.jpg").convert_alpha()
 ground_image = pygame.image.load("graphics/ground.png").convert_alpha()
+
 
 # Create text to display info
 lives_font = pygame.font.Font("font/Atop.ttf", 40)
@@ -48,15 +80,42 @@ main_ch_scl.set_colorkey((255, 255, 255))
 main_ch_walk = pygame.image.load("graphics/Player/player_walk_1.png").convert_alpha()
 main_ch__walk_rec = main_ch_walk.get_rect(bottomleft=(0, 300))
 
+
 # Creates a rectangle around our character so it is easier to locate
 main_ch_rec = main_ch_scl.get_rect(bottomleft=(0, 300))
+
+
+# Lives image
+lives_img = pygame.image.load("graphics/raid.png").convert_alpha()
+lives_img = pygame.transform.rotozoom(lives_img, -15, 0.15)
+
 
 # Load enemies (images)
 moth_one = pygame.image.load("graphics/Snail/moth1.png").convert_alpha()
 moth_one_scl = pygame.transform.scale(moth_one, (60, 60))
-moth_one_rec = moth_one_scl.get_rect(bottomleft=(800, 200))
+# moth_one_rec = moth_one_scl.get_rect(bottomleft=(800, 200)) # used to the first idea
+
+moth_two = pygame.image.load("graphics/Snail/moth2.png").convert_alpha()
+moth_two_scl = pygame.transform.scale(moth_two, (60, 60))
+# moth_two_rec = moth_two_scl.get_rect(bottomleft=(800, 200))
+
+
+# Enemies actions and variables
+enemies_pos_x = 0
+enemies_pos_y = 0
+enemies_rect_list = []
+
 
 # Here we draw and update everything appear on the screen
+
+# Create an event which will be repeated in intervals of time
+enemies_event_one = pygame.USEREVENT + 1
+pygame.time.set_timer(enemies_event_one, randint(1000, 2000))   # Triggers the event within a range of time
+
+
+# Event for the lives can appearance:
+lives_event = pygame.USEREVENT + 2
+pygame.time.set_timer(lives_event, randint(7000, 9000))
 
 while True:
     # Check all the possible events happening and take actions depending on the event
@@ -78,6 +137,25 @@ while True:
                 pygame.quit()
                 exit()
 
+        # This is the event I created
+        if event.type == enemies_event_one and keep == True:
+            enemies_pos_x = randint(850, 1000)
+            enemies_pos_y = randint(60, 300)
+            op = randint(0, 1)
+            print(op)
+            if op:   # If it is one(True)
+                enemies_rect_list.append(moth_one_scl.get_rect(bottomleft=(enemies_pos_x, randint(40, 150))))
+                #enemy_condition = 1
+            else:
+                enemies_rect_list.append(moth_two_scl.get_rect(bottomleft=(enemies_pos_x, randint(150, 300))))
+                #enemy_condition = 2
+
+        if event.type == lives_event and keep == True:
+            if lives <= 3:
+                lives_can_px, lives_can_py = randint(850, 1000), randint(60, 300)
+                lives_img_rec = lives_img.get_rect(bottom=300)
+                print("Can should appear now")
+                lives_img_movement(lives_img_rec)
 
         # The character just can jump if it is touching the ground
         if event.type == pygame.KEYDOWN and main_ch_rec.bottom == 300:
@@ -100,6 +178,8 @@ while True:
         # Testing circle
         pygame.draw.circle(game_screen, "red", (10, 10), 5)
 
+        # Raid display
+        # game_screen.blit(lives_img, lives_img_rec)
 
         # set limits in the background images movement
         if back_img_pos[0] + 1000 < 0:
@@ -109,16 +189,7 @@ while True:
             back_img_2_pos[0] = 1000
 
         # Gives movement to the enemy
-        moth_one_rec.left -= 2
-        moth_one_rec.bottom += randrange(-1, 2) # just give some oscillation to the enemy
-
-        game_screen.blit(moth_one_scl, moth_one_rec)
-
-        # set limits to the enemy movement and resend the enemy to appear again
-        if moth_one_rec.right < 0:
-            moth_one_rec.left = randrange(800, 1000)
-            moth_one_rec.bottom = randrange(60, 250)
-
+        enemies_rect_list, lives = enemies_movement(enemies_rect_list, game_lives=lives)
 
         # Main character position and some instructions
         main_ch_gravity += 1
@@ -132,18 +203,13 @@ while True:
         # also limited the character to go no further than the screen´s width
         pressed_key = pygame.key.get_pressed()
         if (pressed_key[pygame.K_RIGHT] or pressed_key[pygame.K_d]) and (main_ch_rec.right < 800):
-            main_ch_rec.right += 5
+            main_ch_rec.right += 10
 
         if (pressed_key[pygame.K_LEFT] or pressed_key[pygame.K_a]) and (main_ch_rec.left > 0):
-            main_ch_rec.right -= 5
+            main_ch_rec.right -= 10
 
         game_screen.blit(main_ch_scl, main_ch_rec)
 
-        # Check for collision between enemies and main character
-        if main_ch_rec.colliderect(moth_one_rec):
-            lives -= 1
-            moth_one_rec.left = randrange(800, 1000)
-            moth_one_rec.bottom = randrange(60, 250)
 
         # Shows lives text on the screen (at the end so no image cover it)
         lives_surf = lives_font.render(f"lives: {lives}", False, "white")
@@ -154,9 +220,9 @@ while True:
             keep = False
 
     else:
-        game_screen.fill("White")
+        # Create surfaces for game over fonts
         game_over_surf = game_over_font.render("Game Over", False, "darkred")
-        game_over_rect = lives_surf.get_rect(bottomleft=(200, 100))
+        game_over_rect = game_over_surf.get_rect(bottomleft=(200, 100))
         game_screen.blit(game_over_surf, game_over_rect)
 
         retry_surf = game_over_font_2.render("retry:", False, "darkred")
@@ -171,6 +237,7 @@ while True:
         retry_no_rect = retry_no_surf.get_rect(bottomleft=(200, 300))
         game_screen.blit(retry_no_surf, retry_no_rect)
 
+        enemies_rect_list.clear()
 
     # Updates our screen surface
     pygame.display.update()
